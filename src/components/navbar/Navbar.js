@@ -1,16 +1,17 @@
 import CartWidget from "../CartWidget/CartWidget"
+import './stylesnav.css'
 
-const Navbar = () => {
+const NavBar = () => {
     return(
-        <nav>
-            <h3>Ecomerce</h3>
+        <nav className='nav'> 
+            <h3>E-comerce</h3>
             <div>
-                <button> Telefonos </button>
-                <button> Tablets </button>
-                <button> Notebooks </button>
+                <button className='btn'> Telefonos </button>
+                <button className='btn'> Tablets </button>
+                <button className='btn'> Notebooks </button>
             </div>
             <CartWidget />
         </nav>
     )
 }
-export default Navbar
+export default NavBar

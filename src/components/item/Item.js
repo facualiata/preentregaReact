@@ -1,29 +1,22 @@
-import './Item.css'
-
-
 const Item = ({id, name, img, price, stock}) =>{
-    return (
-        <article classname="CardItem">
-            <header classname ="heacer">
-                <h2 classname ="ItemHeader">
+    return(
+        <article classname="carditem">
+            <header classname="header">
+                <h2 classname="itemheader">
                     {name}
                 </h2>
             </header>
-            <picture>
-                <img scr = {img} alt={name} classname="ItemImg"/>
-            </picture>
+            <pucture>
+                <img scr={img} alt={name} classname="itemImg"/>
+            </pucture>
             <section>
-                <p classname ="info">
-                    precio: ${price}
-                </p>
-                <p classname="info">
-                    stock disponible: {stock}
-                </p>
-            </section>
-            <footer classname="itemFooter">
-                <button classname="option"> ver detalle</button>
-            </footer>
+                <p classname="info">Precio: ${price} </p>
 
+                <p classname="info">Stock: ${stock}</p>
+            </section>
+            <footer classname="itemfooter" >
+                <button classname="option"> Ver detalle</button>
+            </footer>
         </article>
     )
 }
