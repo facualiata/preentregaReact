@@ -1,7 +1,8 @@
 import './App.css'
 import NavBar from './components/navbar/NavBar'
 import ItemListContainer from './components/itemlistcontainer/ItemListContainer'
-import ItemCount from './components/itemcount/itemcount'
+import ItemDetailContainer from './components/itemdetailcontainer/itemdetailcontainer';
+
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <ItemListContainer greeting={'Bienvenidos'}/>
-      <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log('Cantidad agregada ', quantity)}/>
+      <ItemDetailContainer/>
     </div>
   );
 }

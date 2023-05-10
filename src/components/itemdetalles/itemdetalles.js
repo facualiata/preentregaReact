@@ -1,18 +1,15 @@
-import './item.css'
-
-
-
-
-const Item = ({ name, img, category, description, price, stock}) => {
+import ItemCount from '../itemcount/itemcount'
+import './itemdetalles.css'
+const ItemDetails = ({ name, img, category, description, price, stock}) => {
     return(
-        <article className='article'>
+        <article className='articulo'>
             <header className='header'>
-                <h2 className="title">
+                <h2 className="CardItem">
                     {name}
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={name} className="Img"/>
+                <img src={img} alt={name} className="ItemImg"/>
             </picture>
             <section>
                 <p className="info">
@@ -26,9 +23,11 @@ const Item = ({ name, img, category, description, price, stock}) => {
                 </p>
             </section>
             <footer>
-                <button className="btndetail">Ver detalle</button>
+                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada: ', quantity)}/>
             </footer>
         </article>
+
     )
-    }
-export default Item;
+}
+
+export default ItemDetails;

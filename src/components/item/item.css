@@ -1,0 +1,42 @@
+.title{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    height: 40px;
+    color: black;
+    justify-content: center;
+    
+
+
+}
+.header{
+    display: flex;
+    justify-content: top;
+    align-items: center;
+}
+.itemheader{
+    display: flex;
+}
+.Img{
+    width: 250px;
+    height: 200px;
+}
+.article{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    width: 380px;
+    height: 380px;
+    justify-content: center;
+    align-content: center;
+    align-items: center; 
+    background-color: rgb(243, 243, 194);
+    border-radius: 10px;
+}
+.btndetail{
+    border-radius: 5px;
+    background-color: blueviolet;
+    color: beige;
+
+}
