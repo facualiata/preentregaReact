@@ -23,7 +23,7 @@ const products= [
         id:'3',
         name:'Galaxy Book I7',
         price:2500,
-        category:'noteboks',
+        category:'notebooks',
         img:'https://www.xtr.com.ar/img/p/11496/a0f91fa25f12482aa5142aa414a70166.jpeg?quality=95&width=490&height=350&mode=max&upscale=false&format=webp',
         stock:'10',
         description:'descripcion de Galaxy Book I7',
@@ -54,5 +54,13 @@ export const getProductById = (productId) => {
         }, 500)
     })
 }
+
+export const getProductsByCategory = (productCategory) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(products.filter((prod) => prod.category === productCategory));
+      }, 800);
+    });
+  };
 
 
