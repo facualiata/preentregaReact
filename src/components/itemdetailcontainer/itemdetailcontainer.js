@@ -1,28 +1,52 @@
 import { useEffect, useState } from "react";
-import { getProductById } from "../../asyncmosck/asyncMock";
+// import { getProductById } from "../../asyncmosck/asyncMock";
 import ItemDetails from "../itemdetalles/itemdetalles";
 import './itemdetailcontainer.css'
 import { useParams } from "react-router-dom";
 
+import { getDocs, doc} from "firebase/firestore";
+import { db } from "../services/firebase/firebaseConfig";
+
 const ItemDetailContainer = () => {
     const [Products, setProducts] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const {itemId} = useParams()
 
     useEffect(() => {
-        getProductById(itemId)
+        setLoading(true)
+
+        const docRef = doc(db, 'products', itemId)
+
+        getDocs(docRef)
             .then(response => {
-                setProducts(response)
+                const data = response.data()
+                const productsAdapted = {id: response.id, ...data}
+                setProducts(productsAdapted)
             })
             .catch(error => {
-                console.error(error)
+                console.log(error)
             })
+            .finally(() => {
+                setLoading(false)
+            })
+            
     }, [itemId])
 
     console.log(Products)
     return(
         <div className="ItemDetailContainer">
-            <ItemDetails {...Products}/>
+
+            {loading ? (
+                <div>
+                    cargando detalle del producto
+                </div>
+            ) : (
+                <ItemDetails {...Products}/>
+            )
+        
+        }
+            {/* <ItemDetails {...Products}/> */}
 
         </div>
     )

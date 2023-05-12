@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { CartProvider } from "../context/cartcontext";
+import { CartContext } from "../context/cartcontext";
 import { Link } from "react-router-dom";
 
 
 const CartItem = ({ id, img, name, price, quantity, category }) => {
-  const { removeItem } = useContext(CartProvider);
+  const { removeItem } = useContext(CartContext);
 
   const handleRemove = () => {
     removeItem(id);
@@ -23,7 +23,7 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
                 <table className="table" id="lista-compra">
                   <thead>
                     <tr>
-                      <th scope="col">Imagen</th>
+                      
                       <th scope="col">Nombre</th>
                       <th scope="col">Precio</th>
                       <th scope="col">Cantidad</th>
@@ -33,9 +33,7 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
 
                   <tbody>
                     <tr>
-                      <td>
-                        <img src={img} alt="" />
-                      </td>
+                      
                       <td>{name}</td>
                       <td>$ {price}</td>
                       <td>{quantity}</td>
@@ -43,7 +41,7 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
                       <td>
                         <button
                           className="btn btn-danger botonEliminar"
-                          onClick={() => handleRemove()}
+                          onClick={handleRemove}
                         >
                           X
                         </button>
@@ -71,14 +69,14 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
                 </div>
 
                 <div className="col-xs-12 col-md-4">
-                  <div className="col-md-4 mb-2">
+                  {/* <div className="col-md-4 mb-2">
                     <Link
                       to="/cartModal"
                       className="btn btn-info btn-block btn-kepBuying"
                     >
                       Ver resumen
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </form>

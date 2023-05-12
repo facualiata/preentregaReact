@@ -1,0 +1,44 @@
+.BtnClearCart, .BtnCheckout{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+
+.btn-kepBuying{
+    color: #fff;
+}
+
+.Button{
+    background-color: crimson;
+    padding: 1%;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.BtnCheckout{
+    background-color: orange;
+    padding: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.CheckoutLink{
+font-size: 110%;
+}
+
+.BtnCheckout:hover{
+    transform: scale(1.2);
+    transition: 0.8s;
+}
+
+.end-purchase{
+    margin-left: 50%;
+}
+
+.container{
+    display: flex;
+    width: 500px;
+    height: 300px;
+    align-items: center;
+    justify-content: space-around;
+}
