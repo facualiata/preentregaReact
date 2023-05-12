@@ -1,15 +1,35 @@
 import ItemCount from '../itemcount/itemcount'
 import './itemdetalles.css'
-const ItemDetails = ({ name, img, category, description, price, stock}) => {
+import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../context/cartcontext'
+ 
+
+const ItemDetails = ({  id,name, img, category, description, price, stock}) => {
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const {addItem} = useContext(CartContext)
+
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded(quantity)
+
+        const item = {
+            id, name, price
+        }
+
+        addItem(item,quantity)
+    }
+
+
     return(
         <article className='articulo'>
             <header className='header'>
-                <h2 className="CardItem">
+                <h2 className="title">
                     {name}
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={name} className="ItemImg"/>
+                <img src={img} alt={name} className="Img"/>
             </picture>
             <section>
                 <p className="info">
@@ -19,12 +39,20 @@ const ItemDetails = ({ name, img, category, description, price, stock}) => {
                     descripcion: {description}
                 </p>
                 <p className="info">
-                    Precio: {price}
+                    Precio: ${price}
+                </p>
+                <p className="info">
+                    Stock: {stock}
                 </p>
             </section>
-            <footer>
-                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada: ', quantity)}/>
-            </footer>
+            <footer>{
+                quantityAdded > 0 ?( 
+                    <Link to='/cart' className='Option' > Terminar compra</Link>
+                ) : (<ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />)
+
+                
+                    }
+                </footer>
         </article>
 
     )

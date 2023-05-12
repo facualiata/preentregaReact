@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const ItemDetailContainer = () => {
     const [Products, setProducts] = useState(null)
 
-    const {itemId} = useParams
+    const {itemId} = useParams()
 
     useEffect(() => {
         getProductById(itemId)
@@ -19,6 +19,7 @@ const ItemDetailContainer = () => {
             })
     }, [itemId])
 
+    console.log(Products)
     return(
         <div className="ItemDetailContainer">
             <ItemDetails {...Products}/>

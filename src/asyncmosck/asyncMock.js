@@ -59,7 +59,7 @@ export const getProductsByCategory = (productCategory) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(products.filter((prod) => prod.category === productCategory));
-      }, 800);
+      }, 500);
     });
   };
 
