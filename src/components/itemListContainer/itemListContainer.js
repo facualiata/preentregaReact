@@ -4,24 +4,26 @@ import ItemList from "../itemlist/ItemList";
 import './itemlistcontainer.css'
 import {useParams} from 'react-router-dom'
 
-import {getDocs, collection, query, where} from 'firebase/firestore'
+import {getDoc, collection, query, where} from 'firebase/firestore'
 import { db } from "../services/firebase/firebaseConfig";
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const { category } = useParams()
+    const { categoryId } = useParams()
 
 
         useEffect(() => {
             setLoading(true)
 
-            const collectionRef = category
-            ? query(collection(db, 'products'), where('category', '==', category))
-            :collection(db, 'products')
+            const collectionRef = collection( db,'items')
+            ? query(collection(db, 'items'), where('category', '==', categoryId))
+            :collection( db, 'items')
 
-            getDocs(collectionRef)
+            console.log(collectionRef)
+
+            getDoc(collectionRef)
             .then(response => {
                 const productsAdapted = response.docs.map(doc => {
                     const data = doc.data()
@@ -38,7 +40,7 @@ const ItemListContainer = ({ greeting }) => {
 
 
             
-     }, [category] )
+     }, [categoryId] )
     return(
         <div classname="container">
             <h1> {greeting} </h1>
