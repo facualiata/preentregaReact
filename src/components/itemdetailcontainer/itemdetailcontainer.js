@@ -4,7 +4,7 @@ import ItemDetails from "../itemdetalles/itemdetalles";
 import './itemdetailcontainer.css'
 import { useParams } from "react-router-dom";
 
-import { getDocs, doc} from "firebase/firestore";
+import { getDoc, doc} from "firebase/firestore";
 import { db } from "../services/firebase/firebaseConfig";
 
 const ItemDetailContainer = () => {
@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
 
         const docRef = doc(db, 'items', itemId)
 
-        getDocs(docRef)
+        getDoc(docRef)
             .then(response => {
                 const data = response.data()
                 const productsAdapted = {id: response.id, ...data}

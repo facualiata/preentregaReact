@@ -17,6 +17,11 @@ export const CartProvider = ({children}) => {
         }
     }
 
+    const total = () => {
+        return cart.reduce(
+          (prev, actual) => prev + actual.quantity * actual.price, 0);
+      };
+
     const removeItem = (itemId) => {
         const cartUpdated = cart.filter(prod => prod.id !== itemId)
         setCart(cartUpdated)

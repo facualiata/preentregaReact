@@ -43,7 +43,7 @@ const ItemListContainer = ({ greeting }) => {
             
      }, [categoryId] )
     return(
-        <div className="container">
+        <div >
             <h1> {greeting} </h1>
             {loading ? (
                 <div>

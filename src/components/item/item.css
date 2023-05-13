@@ -33,6 +33,7 @@
     align-items: center; 
     background-color: rgb(243, 243, 194);
     border-radius: 10px;
+    border: 5px, solid black;
 }
 .btndetail{
     border-radius: 5px;
