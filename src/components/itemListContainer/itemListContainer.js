@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import ItemList from "../itemlist/ItemList";
-// import { getProducts, getProductsByCategory} from "../../asyncmosck/asyncMock"; 
 import './itemlistcontainer.css'
 import {useParams} from 'react-router-dom'
 
-import {getDoc, collection, query, where} from 'firebase/firestore'
+import {getDocs, collection, query, where} from 'firebase/firestore'
 import { db } from "../services/firebase/firebaseConfig";
 
 const ItemListContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([])
+    const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
 
     const { categoryId } = useParams()
@@ -17,19 +16,21 @@ const ItemListContainer = ({ greeting }) => {
         useEffect(() => {
             setLoading(true)
 
-            const collectionRef = collection( db,'items')
-            ? query(collection(db, 'items'), where('category', '==', categoryId))
-            :collection( db, 'items')
+            
+
+            const collectionRef = categoryId ?
+            query(collection(db, 'items'), where('categoryId', '==', categoryId)) :
+            collection(db, 'items')
 
             console.log(collectionRef)
 
-            getDoc(collectionRef)
+            getDocs(collectionRef)
             .then(response => {
                 const productsAdapted = response.docs.map(doc => {
                     const data = doc.data()
                     return{id: doc.id, ...data}
                 })
-                setProducts(productsAdapted)
+                setItems(productsAdapted)
             })
             .catch(error => {
                 console.log(error)
@@ -42,19 +43,19 @@ const ItemListContainer = ({ greeting }) => {
             
      }, [categoryId] )
     return(
-        <div classname="container">
+        <div className="container">
             <h1> {greeting} </h1>
             {loading ? (
                 <div>
                     cargando productos
                 </div>
                 ) : (<div>
-                    <ItemList products={products}/>
+                    <ItemList products={items}/>
                     </div>)
             
             }
 
-            {/* <ItemList products={products}/> */}
+            
         </div>
     )
 }

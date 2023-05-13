@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { getProductById } from "../../asyncmosck/asyncMock";
+
 import ItemDetails from "../itemdetalles/itemdetalles";
 import './itemdetailcontainer.css'
 import { useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import { getDocs, doc} from "firebase/firestore";
 import { db } from "../services/firebase/firebaseConfig";
 
 const ItemDetailContainer = () => {
-    const [Products, setProducts] = useState(null)
+    const[items, setItems] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const {itemId} = useParams()
@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
             .then(response => {
                 const data = response.data()
                 const productsAdapted = {id: response.id, ...data}
-                setProducts(productsAdapted)
+                setItems(productsAdapted)
             })
             .catch(error => {
                 console.log(error)
@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
             
     }, [itemId])
 
-    console.log(Products)
+    
     return(
         <div className="ItemDetailContainer">
 
@@ -42,11 +42,11 @@ const ItemDetailContainer = () => {
                     cargando detalle del producto
                 </div>
             ) : (
-                <ItemDetails {...Products}/>
+                <ItemDetails {...items}/>
             )
         
         }
-            {/* <ItemDetails {...Products}/> */}
+            
 
         </div>
     )
