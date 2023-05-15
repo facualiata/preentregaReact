@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 
 const CartItem = ({ id, img, name, price, quantity, category }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem, total } = useContext(CartContext);
 
   const handleRemove = () => {
     removeItem(id);
   };
+
+  const totalP = total()
 
   return (
     <main>
@@ -38,6 +40,7 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
                       <td>$ {price}</td>
                       <td>{quantity}</td>
                       <td>$ {price * quantity}</td>
+                      <td>{totalP}</td>
                       <td>
                         <button
                           className="btn btn-danger botonEliminar"
@@ -66,17 +69,6 @@ const CartItem = ({ id, img, name, price, quantity, category }) => {
                   >
                     Seguir comprando
                   </Link>
-                </div>
-
-                <div className="col-xs-12 col-md-4">
-                  {/* <div className="col-md-4 mb-2">
-                    <Link
-                      to="/cartModal"
-                      className="btn btn-info btn-block btn-kepBuying"
-                    >
-                      Ver resumen
-                    </Link>
-                  </div> */}
                 </div>
               </div>
             </form>
