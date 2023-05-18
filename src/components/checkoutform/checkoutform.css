@@ -1,11 +1,30 @@
 .Container{
     display: flex;
     flex-direction: column;
+    
 }
 .Form{
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     border-radius: 4px;
+}
+
+
+    .Input{
+    background-color: whitesmoke;
+    color: blueviolet;
+    border-radius: 8px;
+    width: 400px;
+    font-size: large;
+    ;
+}
+.Button{
+    width: 410px;
+    font-size:large;
+    border-radius: 8px;
+    background-color: black;
+    color: blanchedalmond;
 }
