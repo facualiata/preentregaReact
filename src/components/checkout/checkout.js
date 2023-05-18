@@ -21,7 +21,7 @@ const Checkout = () => {
                     name, phone, email
                 },
                 items: cart,
-                total: total,
+                total: total(),
                 date: Timestamp.fromDate(new Date())
             }
 
@@ -73,7 +73,7 @@ const Checkout = () => {
         return <h1>se esta generando su orden</h1>
     }
     if(orderId){
-        return <h1> el id de su orden es {orderId}</h1>
+        return <h1> el id de su orden es: {orderId}</h1>
     }
 
     return(<div className="container">
