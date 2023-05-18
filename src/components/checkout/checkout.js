@@ -22,14 +22,14 @@ const Checkout = () => {
                 },
                 items: cart,
                 total: total,
-                date: Timestamp.fromDate(new Date)
+                date: Timestamp.fromDate(new Date())
             }
 
             const batch = writeBatch(db)
 
             const outOfStock = []
 
-            const ids = cart.nap(prod => prod.id);
+            const ids = cart.map(prod => prod.id);
 
             const productsRef = collection(db, 'items')
 
@@ -76,8 +76,10 @@ const Checkout = () => {
         return <h1> el id de su orden es {orderId}</h1>
     }
 
-    return(<div>
+    return(<div className="container">
         <h1>Checkout</h1>
         <CheckoutForm onConfirm={CreateOrder}/>
     </div>)
 }
+
+export default Checkout;
